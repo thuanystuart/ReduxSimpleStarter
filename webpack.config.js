@@ -3,28 +3,45 @@ module.exports = {
   output: {
     path: __dirname,
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
+  mode: 'development',
   module: {
-    loaders: [
+    rules: [
       {
+        test: /\.js$/,
+        loader: 'babel-loader',
         exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['react', 'es2015', 'stage-1']
-        }
-      }
-    ]
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx']
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 2,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+            },
+          },
+          {
+            loader: 'postcss-loader',
+          },
+        ],
+      },
+      {
+        test: /\.(jpe?g|png|ico|gif|otf)$/i,
+        loader: 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+      },
+    ],
   },
   devServer: {
     historyApiFallback: true,
     contentBase: './',
     watchOptions: {
       aggregateTimeout: 300,
-      poll: 1000
-    }
-  }
-};
+      poll: 1000,
+    },
+  },
+}
