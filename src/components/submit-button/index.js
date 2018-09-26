@@ -3,7 +3,7 @@ import styles from './styles.css'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 
-export default class SubmitButton extends PureComponent {
+class SubmitButton extends PureComponent {
   static propTypes = {
     className: PropTypes.string,
   }
@@ -25,3 +25,5 @@ export default class SubmitButton extends PureComponent {
     )
   }
 }
+
+export default SubmitButton

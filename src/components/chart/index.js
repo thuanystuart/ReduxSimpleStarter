@@ -1,13 +1,12 @@
 import React from 'react'
 import styles from './styles.css'
 import { Sparklines, SparklinesLine, SparklinesReferenceLine } from 'react-sparklines'
-import _ from 'lodash'
 
 const average = data => {
-  return _.round(_.sum(data) / data.length)
+  return Math.round(data.reduce / data.length)
 }
 
-export default props => {
+const Chart = props => {
   const { data, color, unit } = props
 
   return (
@@ -22,3 +21,5 @@ export default props => {
     </div>
   )
 }
+
+export default Chart
