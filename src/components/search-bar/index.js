@@ -3,7 +3,6 @@ import styles from './styles.css'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import { fetchWeather } from '../../actions'
 
 class SearchBar extends PureComponent {
@@ -19,10 +18,6 @@ class SearchBar extends PureComponent {
     event.preventDefault()
     this.props.fetchWeather(this.state.searchTerm)
     this.setState({ searchTerm: '' })
-  }
-
-  componentWillReceiveProps(nextProps) {
-    console.log('nextProps', nextProps)
   }
 
   render() {
@@ -45,8 +40,8 @@ class SearchBar extends PureComponent {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchWeather }, dispatch)
+const mapDispatchToProps = {
+  fetchWeather,
 }
 
 export default connect(

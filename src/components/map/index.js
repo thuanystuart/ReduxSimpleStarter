@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styles from './styles.css'
 
-export default class Map extends Component {
+class Map extends Component {
   componentDidMount() {
     new google.maps.Map(this.refs.map, {
       zoom: 12,
@@ -16,3 +16,5 @@ export default class Map extends Component {
     return <div className={styles.map} ref="map" />
   }
 }
+
+export default Map
